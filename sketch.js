@@ -10,8 +10,6 @@ var bird, slingshot;
 
 var gameState = "onSling";
 
-var datetime=responseJSON.datetime;
-var hour=daytime.slice(11,13);
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -93,7 +91,10 @@ function keyPressed(){
 }
  async function getTime()
 {
-    var response= await fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo")
+    var response= await fetch("https://worldtimeapi.org/api/timezone/Asia/Kolkata")
     var responseJSON=await response.json();
+    var datetime=responseJSON.datetime;
+     var hour=datetime.slice(11,13);
+
     console.log(responseJSON.datetime);
 }
