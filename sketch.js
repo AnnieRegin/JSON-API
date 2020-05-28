@@ -10,6 +10,9 @@ var bird, slingshot;
 
 var gameState = "onSling";
 
+var datetime=responseJSON.datetime;
+var hour=daytime.slice(11,13);
+
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
 }
@@ -66,7 +69,9 @@ function draw(){
     bird.display();
     platform.display();
     //log6.display();
-    slingshot.display();    
+    slingshot.display();   
+    
+    getTime()
 }
 
 function mouseDragged(){
@@ -85,4 +90,10 @@ function keyPressed(){
     if(keyCode === 32){
        // slingshot.attach(bird.body);
     }
+}
+ async function getTime()
+{
+    var response= await fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo")
+    var responseJSON=await response.json();
+    console.log(responseJSON.datetime);
 }
